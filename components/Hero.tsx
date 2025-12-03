@@ -148,41 +148,54 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 0.6 }}
                   className="relative aspect-[9/16] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 bg-black/20 backdrop-blur-sm"
                 >
-                  {/* Video element */}
-                  <video
-                    ref={videoRef}
-                    className="absolute inset-0 w-full h-full object-cover z-10"
-                    autoPlay
-                    loop
-                    playsInline
-                    muted={isMuted}
-                    controls={false}
-                    onLoadedData={() => {
-                      setVideoLoaded(true)
-                      // Video loaded, try to play
-                      if (videoRef.current) {
-                        videoRef.current.play().catch((error) => {
-                          console.log('Autoplay prevented:', error)
-                        })
-                      }
-                    }}
-                    onCanPlay={() => {
-                      setVideoLoaded(true)
-                      if (videoRef.current) {
-                        videoRef.current.play().catch((error) => {
-                          console.log('Autoplay prevented:', error)
-                        })
-                      }
-                    }}
-                    onError={(e) => {
-                      console.error('Video error:', e)
-                      setVideoLoaded(false)
-                    }}
-                  >
-                    <source src="/hero-video.mp4" type="video/mp4" />
-                    <source src="/hero-video.webm" type="video/webm" />
-                    Your browser does not support the video tag.
-                  </video>
+                  {/* Video element - Only render if video is likely available */}
+                  {videoLoaded && (
+                    <video
+                      ref={videoRef}
+                      className="absolute inset-0 w-full h-full object-cover z-10"
+                      autoPlay
+                      loop
+                      playsInline
+                      muted={isMuted}
+                      controls={false}
+                      onLoadedData={() => {
+                        setVideoLoaded(true)
+                        // Video loaded, try to play
+                        if (videoRef.current) {
+                          videoRef.current.play().catch((error) => {
+                            console.log('Autoplay prevented:', error)
+                          })
+                        }
+                      }}
+                      onCanPlay={() => {
+                        setVideoLoaded(true)
+                        if (videoRef.current) {
+                          videoRef.current.play().catch((error) => {
+                            console.log('Autoplay prevented:', error)
+                          })
+                        }
+                      }}
+                      onError={(e) => {
+                        console.error('Video error:', e)
+                        setVideoLoaded(false)
+                      }}
+                    >
+                      <source src="/hero-video.mp4" type="video/mp4" />
+                      <source src="/hero-video.webm" type="video/webm" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+
+                  {/* Try to load video on mount */}
+                  {!videoLoaded && (
+                    <video
+                      className="hidden"
+                      onLoadedData={() => setVideoLoaded(true)}
+                      onError={() => setVideoLoaded(false)}
+                    >
+                      <source src="/hero-video.mp4" type="video/mp4" />
+                    </video>
+                  )}
                   
                   {/* Placeholder - Only shows if video fails to load */}
                   {!videoLoaded && (
