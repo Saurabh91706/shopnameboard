@@ -151,7 +151,7 @@ export default function BlogPostPage() {
           "@id": "https://shopnameboard.com/#local",
           "name": "The Mediaverse - Shop Name Boards",
           "url": "https://shopnameboard.com",
-          "telephone": "+91 98765 43210",
+          "telephone": "+91 9580088540",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Bangalore",
