@@ -186,7 +186,7 @@ export default function Footer() {
                   </svg>
                 </motion.div>
                 <span className="text-gray-600 group-hover:text-red-600 transition-colors">
-                  +91 98765 43210
+                  +91 9580088540
                 </span>
               </motion.li>
               <motion.li
@@ -214,7 +214,7 @@ export default function Footer() {
                   </svg>
                 </motion.div>
                 <span className="text-gray-600 group-hover:text-red-600 transition-colors">
-                  info@shopnameboards.com
+                  contact@themediaverse.in
                 </span>
               </motion.li>
             </ul>
