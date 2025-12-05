@@ -1,29 +1,13 @@
 import { MetadataRoute } from 'next'
+import { citiesData } from '@/lib/cities-data'
+import { servicesData } from '@/lib/services-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://shopnameboard.com'
 
-  // All cities
-  const cities = [
-    'mumbai', 'delhi', 'bangalore', 'hyderabad', 'chennai',
-    'kolkata', 'pune', 'ahmedabad', 'jaipur', 'surat',
-    'lucknow', 'kanpur', 'nagpur', 'indore', 'thane',
-    'bhopal', 'visakhapatnam', 'patna', 'vadodara', 'ghaziabad'
-  ]
-
-  // All services
-  const services = [
-    'acp-board-manufacturer',
-    'led-signage-boards',
-    'gsb-board-manufacturer',
-    'non-lit-boards',
-    '3d-letter-signage',
-    'glow-sign-boards',
-    'backlit-signage',
-    'acrylic-signage',
-    'metal-letter-signage',
-    'neon-signs'
-  ]
+  // Get all cities and services from data files
+  const cities = Object.keys(citiesData)
+  const services = Object.keys(servicesData)
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -65,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // City pages
+  // City pages (20 pages)
   const cityPages: MetadataRoute.Sitemap = cities.map((city) => ({
     url: `${baseUrl}/locations/${city}`,
     lastModified: new Date(),
@@ -73,7 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
-  // Service pages
+  // Service pages (8 pages)
   const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${baseUrl}/services/${service}`,
     lastModified: new Date(),
@@ -81,5 +65,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
-  return [...staticPages, ...cityPages, ...servicePages]
+  // City-Service combination pages (20 cities × 8 services = 160 pages)
+  const cityServicePages: MetadataRoute.Sitemap = []
+  cities.forEach(city => {
+    services.forEach(service => {
+      cityServicePages.push({
+        url: `${baseUrl}/locations/${city}/${service}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      })
+    })
+  })
+
+  // Total: 6 static + 20 cities + 8 services + 160 city-service = 194 pages
+  // Plus blog posts will be added dynamically
+  return [...staticPages, ...cityPages, ...servicePages, ...cityServicePages]
 }
