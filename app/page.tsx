@@ -5,6 +5,7 @@ import Gallery from '@/components/Gallery'
 import Features from '@/components/Features'
 import CTA from '@/components/CTA'
 import CitySection from '@/components/CitySection'
+import FAQSection from '@/components/FAQSection'
 
 export const metadata: Metadata = {
   title: '#1 Shop Name Board Manufacturer in India | ACP, LED, GSB Boards',
@@ -31,6 +32,7 @@ export default function Home() {
       <Services />
       <CitySection />
       <Gallery />
+      <FAQSection />
       <CTA />
 
       {/* Schema.org JSON-LD for Homepage */}
