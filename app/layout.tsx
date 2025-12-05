@@ -8,16 +8,16 @@ import ConditionalLayout from '@/components/ConditionalLayout'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Shop Name Boards Manufacturing & Marketing in Bangalore, Mumbai, Delhi, Chennai, Pune, Kolkata | The Mediaverse',
-  description: 'India\'s #1 Shop Name Boards Manufacturer & Marketing Company. Premium ACP 3D Boards, LED Signage, Fabric Light Boxes in Bangalore, Mumbai, Delhi, Chennai, Pune, Kolkata. 14+ Signage Solutions. Free Quote. Fast Delivery.',
-  keywords: 'shop name boards manufacturing, shop name boards marketing, shop name board manufacturer, signage company, ACP board manufacturer, LED sign board, 3D letter signage, shop hoarding, retail signage, corporate branding, shop name boards Bangalore, shop name boards Mumbai, shop name boards Delhi, shop name boards Chennai, shop name boards Pune, shop name boards Kolkata, shop name boards Hyderabad, shop name boards Ahmedabad, shop name boards Jaipur, shop name boards Lucknow, shop name boards Indore, shop name boards Patna, shop name boards Bhopal, shop name boards Visakhapatnam, shop name boards Surat, shop name boards Kanpur, shop name boards Nagpur, shop name boards Coimbatore, shop name boards Vadodara, shop name boards Ghaziabad',
+  title: '#1 Shop Name Board Manufacturer in India | Shop Name Board by The Mediaverse',
+  description: 'Leading shop name board manufacturer in India. Expert in ACP, GSB, Non-Lit boards across 20 cities. ✓ Free Quote ✓ Fast Installation. Call 9580088540',
+  keywords: 'shop name board manufacturer, shop name board marketing, shop name board, ACP board, GSB board, 2d acp board, 3d acp board, shop boards, name board for shop, shop signage, shop name boards near me, best shop name board manufacturer India',
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
   },
   openGraph: {
-    title: 'Shop Name Boards Manufacturing & Marketing | The Mediaverse',
-    description: 'Premium Shop Name Boards & Signage Solutions in Bangalore, Mumbai, Delhi, Chennai, Pune, Kolkata. ACP 3D Boards, LED Signage, Fabric Light Boxes.',
+    title: '#1 Shop Name Board Manufacturer in India | The Mediaverse',
+    description: 'Leading shop name board manufacturer in India. Expert in ACP, GSB, Non-Lit boards across 20 cities. Free Quote & Fast Installation.',
     type: 'website',
     locale: 'en_IN',
   },
@@ -43,44 +43,57 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "@id": "https://shopnameboard.com",
-              "name": "The Mediaverse - Shop Name Boards Manufacturing & Marketing",
+              "name": "Shop Name Board by The Mediaverse",
               "alternateName": "The Mediaverse",
               "url": "https://shopnameboard.com",
               "logo": "https://shopnameboard.com/logo.png",
               "image": "https://shopnameboard.com/logo.png",
-              "description": "India's #1 Shop Name Boards Manufacturer & Marketing Company. Premium ACP 3D Boards, LED Signage, Fabric Light Boxes in Bangalore, Mumbai, Delhi, Chennai, Pune, Kolkata. 14+ Signage Solutions.",
+              "description": "India's #1 shop name board manufacturer serving 20+ cities. Expert in ACP, GSB, and all types of signage solutions.",
+              "email": "contact@themediaverse.in",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN",
                 "addressLocality": "India"
               },
               "areaServed": [
-                {"@type": "City", "name": "Bangalore"},
                 {"@type": "City", "name": "Mumbai"},
                 {"@type": "City", "name": "Delhi"},
-                {"@type": "City", "name": "Chennai"},
-                {"@type": "City", "name": "Pune"},
-                {"@type": "City", "name": "Kolkata"},
+                {"@type": "City", "name": "Bangalore"},
                 {"@type": "City", "name": "Hyderabad"},
+                {"@type": "City", "name": "Chennai"},
+                {"@type": "City", "name": "Kolkata"},
+                {"@type": "City", "name": "Pune"},
                 {"@type": "City", "name": "Ahmedabad"},
                 {"@type": "City", "name": "Jaipur"},
-                {"@type": "City", "name": "Lucknow"}
+                {"@type": "City", "name": "Surat"},
+                {"@type": "City", "name": "Lucknow"},
+                {"@type": "City", "name": "Indore"},
+                {"@type": "City", "name": "Chandigarh"},
+                {"@type": "City", "name": "Coimbatore"},
+                {"@type": "City", "name": "Kochi"},
+                {"@type": "City", "name": "Nagpur"},
+                {"@type": "City", "name": "Bhubaneswar"},
+                {"@type": "City", "name": "Visakhapatnam"},
+                {"@type": "City", "name": "Guwahati"},
+                {"@type": "City", "name": "Mysore"}
               ],
               "serviceType": [
-                "Shop Name Boards Manufacturing",
-                "Shop Name Boards Marketing",
-                "ACP 3D Board Manufacturing",
-                "LED Signage Manufacturing",
+                "2D ACP Board Manufacturing",
+                "3D ACP Board Manufacturing",
+                "GSB Board Manufacturing",
+                "Non-Lit Board Manufacturing",
+                "Arch Gate Manufacturing",
                 "Fabric Light Box Manufacturing",
-                "Retail Signage Solutions",
-                "Corporate Branding Solutions"
+                "Lit Flange Board Manufacturing",
+                "Non-Lit Flange Board Manufacturing"
               ],
-              "priceRange": "$$",
+              "priceRange": "₹₹",
               "sameAs": [],
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+91-9580088540",
                 "contactType": "Customer Service",
+                "email": "contact@themediaverse.in",
                 "availableLanguage": ["English", "Hindi"]
               },
               "aggregateRating": {

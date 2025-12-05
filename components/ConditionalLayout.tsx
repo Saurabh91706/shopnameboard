@@ -1,8 +1,8 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import Navbar from './Navbar'
-import Footer from './Footer'
+import Header from './Header'
+import Footer from './Footer-new'
 
 export default function ConditionalLayout({
   children,
@@ -18,7 +18,7 @@ export default function ConditionalLayout({
 
   return (
     <>
-      <Navbar />
+      <Header />
       <main>{children}</main>
       <Footer />
     </>
