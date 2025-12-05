@@ -158,6 +158,7 @@ export default function Hero() {
                       playsInline
                       muted={isMuted}
                       controls={false}
+                      crossOrigin="anonymous"
                       onLoadedData={() => {
                         setVideoLoaded(true)
                         // Video loaded, try to play
@@ -180,8 +181,10 @@ export default function Hero() {
                         setVideoLoaded(false)
                       }}
                     >
+                      {/* Try local file first */}
                       <source src="/hero-video.mp4" type="video/mp4" />
-                      <source src="/hero-video.webm" type="video/webm" />
+                      {/* Fallback to a demo video - REPLACE THIS WITH YOUR ACTUAL VIDEO */}
+                      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                   )}
@@ -191,7 +194,17 @@ export default function Hero() {
                     <video
                       className="hidden"
                       onLoadedData={() => setVideoLoaded(true)}
-                      onError={() => setVideoLoaded(false)}
+                      onError={(e) => {
+                        // If local video fails, try to load demo video
+                        const target = e.target as HTMLVideoElement;
+                        if (target.src.includes('/hero-video.mp4')) {
+                          target.src = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+                          target.load();
+                        } else {
+                          setVideoLoaded(false);
+                        }
+                      }}
+                      crossOrigin="anonymous"
                     >
                       <source src="/hero-video.mp4" type="video/mp4" />
                     </video>
