@@ -197,19 +197,65 @@ export default function Hero() {
                     </video>
                   )}
                   
-                  {/* Placeholder - Only shows if video fails to load */}
+                  {/* Animated Gradient Placeholder - Shows if video fails to load */}
                   {!videoLoaded && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-red-900/30 to-red-800/30 z-0">
-                    <div className="text-center p-6">
-                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border-2 border-white/30">
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
+                    <div className="absolute inset-0 z-0">
+                      {/* Animated gradient background */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-red-500 via-red-600 to-red-700 animate-gradient-slow" />
+
+                      {/* Overlay pattern */}
+                      <div className="absolute inset-0 opacity-20">
+                        <div className="absolute inset-0" style={{
+                          backgroundImage: `radial-gradient(circle at 20% 30%, rgba(255,255,255,0.2) 0%, transparent 50%),
+                                           radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                                           radial-gradient(circle at 40% 80%, rgba(255,255,255,0.1) 0%, transparent 50%)`
+                        }} />
                       </div>
-                      <p className="text-white/80 text-sm font-medium">Video Space</p>
-                      <p className="text-white/60 text-xs mt-1">Instagram Reel Size</p>
+
+                      {/* Content */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+                        <motion.div
+                          animate={{
+                            scale: [1, 1.1, 1],
+                            rotate: [0, 5, -5, 0]
+                          }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                          className="w-20 h-20 mx-auto mb-6 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center border-4 border-white/50 shadow-2xl"
+                        >
+                          <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+                          </svg>
+                        </motion.div>
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3 }}
+                          className="text-center"
+                        >
+                          <h3 className="text-white text-lg font-bold mb-2">Shop Name Boards</h3>
+                          <p className="text-white/90 text-sm font-medium mb-1">Premium Quality Signage</p>
+                          <p className="text-white/70 text-xs">ACP • LED • 3D Boards</p>
+                        </motion.div>
+                      </div>
+
+                      {/* Animated border pulse */}
+                      <motion.div
+                        animate={{
+                          opacity: [0.5, 1, 0.5],
+                          scale: [1, 1.02, 1]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                        className="absolute inset-0 border-4 border-white/30 rounded-2xl"
+                      />
                     </div>
-                  </div>
                   )}
                   
                   {/* Sound Toggle Button - Top Right */}

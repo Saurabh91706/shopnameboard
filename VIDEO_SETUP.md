@@ -1,9 +1,28 @@
 # Hero Video Setup Instructions
 
-## Issue
-The hero video (`hero-video.mp4`) is currently stored in Git LFS (Large File Storage), but only the pointer file is being deployed, not the actual video. This causes the video to not display on the website.
+## Current Status
+✅ An animated gradient placeholder is now displayed in the hero section
+⚠️ To show your actual video, you need to upload the video file
 
-## Solution Options
+## Quick Setup (Recommended)
+
+### Step 1: Get Your Video Ready
+- Format: MP4 (required), WebM (optional)
+- Dimensions: 1080x1920 pixels (9:16 aspect ratio - Instagram Reel size)
+- Recommended size: Under 10MB for best performance
+
+### Step 2: Upload Video to Project
+```bash
+# Copy your video file to the public directory
+cp /path/to/your/video.mp4 public/hero-video.mp4
+
+# Commit and push
+git add public/hero-video.mp4 .gitattributes
+git commit -m "Add hero video"
+git push
+```
+
+## Alternative Solution Options
 
 ### Option 1: Upload Video Directly (Recommended for small videos)
 1. Replace the LFS pointer file with the actual video:
