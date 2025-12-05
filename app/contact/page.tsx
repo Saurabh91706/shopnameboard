@@ -799,7 +799,7 @@ export default function ContactPage() {
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -5 }}
               className="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-8 border-2 border-red-200 shadow-lg hover:shadow-xl transition-all cursor-pointer"
-              onClick={() => copyToClipboard('+91 95800 88540', 'Phone number')}
+              onClick={() => copyToClipboard('+91 9580088540', 'Phone number')}
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
@@ -811,7 +811,7 @@ export default function ContactPage() {
                 </svg>
               </motion.div>
               <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">Phone</h3>
-              <p className="text-gray-700 text-center mb-2">+91 95800 88540</p>
+              <p className="text-gray-700 text-center mb-2">+91 9580088540</p>
               <p className="text-sm text-gray-500 text-center">Click to copy</p>
             </motion.div>
 
