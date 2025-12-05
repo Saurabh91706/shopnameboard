@@ -1,164 +1,19 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
+import { citiesData, CitySlug } from '@/lib/cities-data'
+import { servicesData } from '@/lib/services-data'
 
-// Top 20 Indian cities for SEO targeting
-const cities = {
-  mumbai: {
-    name: 'Mumbai',
-    state: 'Maharashtra',
-    description: 'India\'s financial capital and commercial hub',
-    population: '20M+',
-    landmarks: ['Gateway of India', 'Marine Drive', 'Bandra-Worli Sea Link']
-  },
-  delhi: {
-    name: 'Delhi',
-    state: 'Delhi NCR',
-    description: 'The capital territory of India',
-    population: '18M+',
-    landmarks: ['India Gate', 'Connaught Place', 'Chandni Chowk']
-  },
-  bangalore: {
-    name: 'Bangalore',
-    state: 'Karnataka',
-    description: 'India\'s Silicon Valley and startup hub',
-    population: '12M+',
-    landmarks: ['MG Road', 'Koramangala', 'Electronic City']
-  },
-  hyderabad: {
-    name: 'Hyderabad',
-    state: 'Telangana',
-    description: 'The City of Pearls and IT hub',
-    population: '10M+',
-    landmarks: ['HITEC City', 'Gachibowli', 'Madhapur']
-  },
-  chennai: {
-    name: 'Chennai',
-    state: 'Tamil Nadu',
-    description: 'The Gateway to South India',
-    population: '10M+',
-    landmarks: ['T Nagar', 'Anna Nagar', 'Velachery']
-  },
-  kolkata: {
-    name: 'Kolkata',
-    state: 'West Bengal',
-    description: 'The Cultural Capital of India',
-    population: '14M+',
-    landmarks: ['Park Street', 'Salt Lake', 'New Market']
-  },
-  pune: {
-    name: 'Pune',
-    state: 'Maharashtra',
-    description: 'The Oxford of the East',
-    population: '7M+',
-    landmarks: ['Koregaon Park', 'Hinjewadi', 'MG Road']
-  },
-  ahmedabad: {
-    name: 'Ahmedabad',
-    state: 'Gujarat',
-    description: 'The Manchester of India',
-    population: '8M+',
-    landmarks: ['Satellite', 'Vastrapur', 'CG Road']
-  },
-  jaipur: {
-    name: 'Jaipur',
-    state: 'Rajasthan',
-    description: 'The Pink City',
-    population: '4M+',
-    landmarks: ['MI Road', 'Malviya Nagar', 'Vaishali Nagar']
-  },
-  surat: {
-    name: 'Surat',
-    state: 'Gujarat',
-    description: 'The Diamond City',
-    population: '6M+',
-    landmarks: ['Adajan', 'Vesu', 'Althan']
-  },
-  lucknow: {
-    name: 'Lucknow',
-    state: 'Uttar Pradesh',
-    description: 'The City of Nawabs',
-    population: '3.5M+',
-    landmarks: ['Hazratganj', 'Gomti Nagar', 'Aliganj']
-  },
-  kanpur: {
-    name: 'Kanpur',
-    state: 'Uttar Pradesh',
-    description: 'The Leather City',
-    population: '3M+',
-    landmarks: ['Civil Lines', 'Swaroop Nagar', 'Kakadeo']
-  },
-  nagpur: {
-    name: 'Nagpur',
-    state: 'Maharashtra',
-    description: 'The Orange City',
-    population: '3M+',
-    landmarks: ['Sitabuldi', 'Dharampeth', 'Sadar']
-  },
-  indore: {
-    name: 'Indore',
-    state: 'Madhya Pradesh',
-    description: 'The Cleanest City of India',
-    population: '3M+',
-    landmarks: ['Vijay Nagar', 'South Tukoganj', 'MG Road']
-  },
-  thane: {
-    name: 'Thane',
-    state: 'Maharashtra',
-    description: 'The City of Lakes',
-    population: '2M+',
-    landmarks: ['Ghodbunder Road', 'Eastern Express Highway', 'Thane West']
-  },
-  bhopal: {
-    name: 'Bhopal',
-    state: 'Madhya Pradesh',
-    description: 'The City of Lakes',
-    population: '2M+',
-    landmarks: ['MP Nagar', 'Arera Colony', 'New Market']
-  },
-  visakhapatnam: {
-    name: 'Visakhapatnam',
-    state: 'Andhra Pradesh',
-    description: 'The City of Destiny',
-    population: '2M+',
-    landmarks: ['Beach Road', 'Madhurawada', 'Gajuwaka']
-  },
-  patna: {
-    name: 'Patna',
-    state: 'Bihar',
-    description: 'The Ancient City',
-    population: '2M+',
-    landmarks: ['Boring Road', 'Fraser Road', 'Kankarbagh']
-  },
-  vadodara: {
-    name: 'Vadodara',
-    state: 'Gujarat',
-    description: 'The Cultural Capital of Gujarat',
-    population: '2M+',
-    landmarks: ['Alkapuri', 'RC Dutt Road', 'Sayajigunj']
-  },
-  ghaziabad: {
-    name: 'Ghaziabad',
-    state: 'Uttar Pradesh',
-    description: 'The Gateway of UP',
-    population: '2M+',
-    landmarks: ['Indirapuram', 'Vaishali', 'Raj Nagar']
-  }
-}
-
-type CitySlug = keyof typeof cities
-
-// Generate static paths for all cities
+// Generate static paths for all 20 cities
 export async function generateStaticParams() {
-  return Object.keys(cities).map((city) => ({
+  return Object.keys(citiesData).map((city) => ({
     city: city,
   }))
 }
 
-// Generate metadata for each city page
+// Generate SEO-optimized metadata for each city
 export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
-  const cityData = cities[params.city as CitySlug]
+  const cityData = citiesData[params.city as CitySlug]
 
   if (!cityData) {
     return {
@@ -167,18 +22,18 @@ export async function generateMetadata({ params }: { params: { city: string } })
   }
 
   const title = `#1 Shop Name Board Manufacturer in ${cityData.name} | ACP, LED, GSB Boards`
-  const description = `Leading shop name board manufacturer in ${cityData.name}, ${cityData.state}. Expert in ACP 3D boards, LED signage, GSB boards, non-lit boards. ✓ Free Quote ✓ Fast Installation ✓ 2 Year Warranty. Call +91 9580088540`
+  const description = `Leading shop name board manufacturer in ${cityData.name}, ${cityData.state}. Expert in ACP 2D/3D boards, LED signage, GSB boards, arch gates, fabric boxes. ✓ Free Quote ✓ Fast Installation ✓ 2 Year Warranty. Call 9580088540`
 
   return {
     title,
     description,
-    keywords: `shop name board manufacturer ${cityData.name.toLowerCase()}, shop name board marketing ${cityData.name.toLowerCase()}, ACP board manufacturer ${cityData.name.toLowerCase()}, LED signage ${cityData.name.toLowerCase()}, GSB board manufacturer ${cityData.name.toLowerCase()}, non-lit board ${cityData.name.toLowerCase()}, 3D letter signage ${cityData.name.toLowerCase()}, glow sign board ${cityData.name.toLowerCase()}, shop branding ${cityData.name.toLowerCase()}`,
+    keywords: `shop name board manufacturer ${cityData.name.toLowerCase()}, shop name board marketing ${cityData.name.toLowerCase()}, ACP board manufacturer ${cityData.name.toLowerCase()}, LED signage ${cityData.name.toLowerCase()}, GSB board manufacturer ${cityData.name.toLowerCase()}, ${cityData.name.toLowerCase()} signage, shop branding ${cityData.name.toLowerCase()}`,
     openGraph: {
       title,
       description,
       type: 'website',
       locale: 'en_IN',
-      siteName: 'The Mediaverse',
+      siteName: 'Shop Name Board by The Mediaverse',
     },
     twitter: {
       card: 'summary_large_image',
@@ -192,70 +47,11 @@ export async function generateMetadata({ params }: { params: { city: string } })
 }
 
 export default function CityPage({ params }: { params: { city: string } }) {
-  const cityData = cities[params.city as CitySlug]
+  const cityData = citiesData[params.city as CitySlug]
 
   if (!cityData) {
     notFound()
   }
-
-  const services = [
-    {
-      name: 'ACP Board Manufacturing',
-      slug: 'acp-board-manufacturer',
-      description: 'Premium ACP 3D boards with LED lights, weather-resistant and long-lasting',
-      price: '₹8,000 - ₹25,000',
-      icon: '🏢'
-    },
-    {
-      name: 'LED Signage Boards',
-      slug: 'led-signage-boards',
-      description: 'Bright, energy-efficient LED boards that attract customers 24/7',
-      price: '₹12,000 - ₹40,000',
-      icon: '💡'
-    },
-    {
-      name: 'GSB Board Manufacturing',
-      slug: 'gsb-board-manufacturer',
-      description: 'Galvanized Steel Boards for durability and professional look',
-      price: '₹6,000 - ₹20,000',
-      icon: '⚡'
-    },
-    {
-      name: 'Non-Lit Board Manufacturing',
-      slug: 'non-lit-boards',
-      description: 'Cost-effective non-illuminated boards for indoor and outdoor use',
-      price: '₹3,000 - ₹12,000',
-      icon: '📋'
-    },
-    {
-      name: '3D Letter Signage',
-      slug: '3d-letter-signage',
-      description: 'Eye-catching 3D letters in acrylic, metal, or LED backlit options',
-      price: '₹10,000 - ₹35,000',
-      icon: '🔤'
-    },
-    {
-      name: 'Glow Sign Boards',
-      slug: 'glow-sign-boards',
-      description: 'Traditional neon-style glow signs for classic shop branding',
-      price: '₹8,000 - ₹22,000',
-      icon: '✨'
-    },
-    {
-      name: 'Backlit Signage',
-      slug: 'backlit-signage',
-      description: 'Illuminated from behind for stunning day and night visibility',
-      price: '₹9,000 - ₹28,000',
-      icon: '🌟'
-    },
-    {
-      name: 'Acrylic Signage',
-      slug: 'acrylic-signage',
-      description: 'Modern, sleek acrylic boards in various colors and finishes',
-      price: '₹5,000 - ₹18,000',
-      icon: '💎'
-    }
-  ]
 
   const whyChooseUs = [
     {
@@ -283,7 +79,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
   const faqData = [
     {
       question: `How much does a shop name board cost in ${cityData.name}?`,
-      answer: `Prices in ${cityData.name} range from ₹3,000 for basic non-lit boards to ₹40,000+ for premium LED signage. Factors include size, materials, lighting, and installation complexity. We offer free quotes with transparent pricing.`
+      answer: `Prices in ${cityData.name} range from ₹2,000 for basic non-lit boards to ₹50,000+ for premium arch gates. Factors include size, materials, lighting, and installation complexity. We offer free quotes with transparent pricing.`
     },
     {
       question: `Do you provide installation in all areas of ${cityData.name}?`,
@@ -312,8 +108,8 @@ export default function CityPage({ params }: { params: { city: string } }) {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `https://shopnameboard.com/locations/${params.city}#business`,
-    name: `The Mediaverse - Shop Name Boards ${cityData.name}`,
-    description: `Leading shop name board manufacturer in ${cityData.name}. ACP boards, LED signage, GSB boards manufacturing and marketing services.`,
+    name: `Shop Name Board by The Mediaverse - ${cityData.name}`,
+    description: `Leading shop name board manufacturer in ${cityData.name}. ACP boards, LED signage, GSB boards, arch gates, fabric boxes manufacturing and installation services.`,
     url: `https://shopnameboard.com/locations/${params.city}`,
     telephone: '+91-9580088540',
     email: 'contact@themediaverse.in',
@@ -341,7 +137,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Shop Name Board Services',
-      itemListElement: services.map(service => ({
+      itemListElement: Object.values(servicesData).map(service => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -379,7 +175,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white overflow-hidden flex items-center pt-24">
+      <section className="relative min-h-[70vh] bg-gradient-to-br from-orange-500 via-orange-600 to-black text-white overflow-hidden flex items-center pt-24">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{ backgroundImage: 'url(/city-pattern.svg)', backgroundSize: 'cover' }} />
         </div>
@@ -397,14 +193,14 @@ export default function CityPage({ params }: { params: { city: string } }) {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-red-100 mb-8 leading-relaxed">
-              Expert shop name board manufacturing and marketing in {cityData.name}. Specializing in ACP 3D boards, LED signage, GSB boards, and non-lit boards. ✓ Free Quote ✓ 2 Year Warranty ✓ Fast Installation
+            <p className="text-xl md:text-2xl text-orange-100 mb-8 leading-relaxed">
+              Expert shop name board manufacturing by <strong>Shop Name Board by The Mediaverse</strong>. Specializing in ACP 2D/3D boards, LED signage, GSB boards, arch gates, and fabric boxes. ✓ Free Quote ✓ 2 Year Warranty ✓ Fast Installation
             </p>
 
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="bg-white text-red-600 px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:bg-yellow-300 hover:text-red-700 transition-all duration-300"
+                className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:bg-yellow-300 hover:text-orange-700 transition-all duration-300"
               >
                 Get Free Quote
               </Link>
@@ -423,7 +219,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 href="tel:+919580088540"
                 className="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300"
               >
-                📞 Call Now
+                📞 9580088540
               </a>
             </div>
 
@@ -450,30 +246,30 @@ export default function CityPage({ params }: { params: { city: string } }) {
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              Our Services in <span className="gradient-text">{cityData.name}</span>
+              Our Services in <span className="text-orange-600">{cityData.name}</span>
             </h2>
             <p className="text-xl text-gray-600">
-              Complete shop name board manufacturing and marketing solutions
+              Complete shop name board manufacturing and installation solutions
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
+            {Object.entries(servicesData).map(([slug, service], index) => (
               <Link
                 key={index}
-                href={`/services/${service.slug}`}
-                className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border-2 border-gray-200 hover:border-red-500 hover:shadow-2xl transition-all duration-300"
+                href={`/locations/${params.city}/${slug}`}
+                className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border-2 border-gray-200 hover:border-orange-500 hover:shadow-2xl transition-all duration-300"
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
                   {service.name}
                 </h3>
                 <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                   {service.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-red-600 font-bold">{service.price}</span>
-                  <span className="text-red-600 group-hover:translate-x-2 transition-transform">→</span>
+                  <span className="text-orange-600 font-bold">{service.priceRange}</span>
+                  <span className="text-orange-600 group-hover:translate-x-2 transition-transform">→</span>
                 </div>
               </Link>
             ))}
@@ -482,7 +278,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-gradient-to-br from-red-50 to-white">
+      <section className="section-padding bg-gradient-to-br from-orange-50 to-white">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
@@ -494,7 +290,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center hover:border-red-500 hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-2xl p-8 border-2 border-gray-200 text-center hover:border-orange-500 hover:shadow-xl transition-all duration-300"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -517,16 +313,16 @@ export default function CityPage({ params }: { params: { city: string } }) {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-red-50 to-white rounded-3xl p-8 md:p-12 border-2 border-red-200">
+          <div className="bg-gradient-to-br from-orange-50 to-white rounded-3xl p-8 md:p-12 border-2 border-orange-200">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {cityData.landmarks.map((area, index) => (
                 <div key={index} className="flex items-center gap-2 text-gray-700">
-                  <span className="text-red-600 text-xl">✓</span>
+                  <span className="text-orange-600 text-xl">✓</span>
                   <span className="font-semibold">{area}</span>
                 </div>
               ))}
               <div className="flex items-center gap-2 text-gray-700">
-                <span className="text-red-600 text-xl">✓</span>
+                <span className="text-orange-600 text-xl">✓</span>
                 <span className="font-semibold">And all surrounding areas</span>
               </div>
             </div>
@@ -535,7 +331,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
               <p className="text-gray-600 mb-4">Don't see your area? We likely serve it too!</p>
               <Link
                 href="/contact"
-                className="inline-block bg-red-600 text-white px-8 py-3 rounded-full font-bold hover:bg-red-700 transition-colors"
+                className="inline-block bg-orange-600 text-white px-8 py-3 rounded-full font-bold hover:bg-orange-700 transition-colors"
               >
                 Check Service Availability
               </Link>
@@ -560,11 +356,11 @@ export default function CityPage({ params }: { params: { city: string } }) {
             {faqData.map((faq, index) => (
               <details
                 key={index}
-                className="bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-red-300 transition-all group"
+                className="bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-orange-300 transition-all group"
               >
-                <summary className="px-6 py-5 font-bold text-lg text-gray-900 cursor-pointer hover:text-red-600 transition-colors flex items-center justify-between">
+                <summary className="px-6 py-5 font-bold text-lg text-gray-900 cursor-pointer hover:text-orange-600 transition-colors flex items-center justify-between">
                   {faq.question}
-                  <span className="text-red-600 text-2xl group-open:rotate-180 transition-transform">▼</span>
+                  <span className="text-orange-600 text-2xl group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <div className="px-6 pb-5 text-gray-700 leading-relaxed">
                   {faq.answer}
@@ -576,18 +372,18 @@ export default function CityPage({ params }: { params: { city: string } }) {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
+      <section className="section-padding bg-gradient-to-br from-orange-600 via-orange-700 to-black text-white">
         <div className="container-custom text-center">
           <h2 className="text-4xl md:text-5xl font-black mb-6">
             Ready to Transform Your Shop in {cityData.name}?
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-red-100">
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-orange-100">
             Get a free quote for premium shop name boards. Our team will visit your location in {cityData.name} for accurate measurements and consultation.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/contact"
-              className="bg-white text-red-600 px-10 py-5 rounded-full font-bold text-lg shadow-2xl hover:bg-yellow-300 hover:text-red-700 transition-all duration-300"
+              className="bg-white text-orange-600 px-10 py-5 rounded-full font-bold text-lg shadow-2xl hover:bg-yellow-300 hover:text-orange-700 transition-all duration-300"
             >
               Get Free Quote Now
             </Link>
@@ -595,7 +391,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
               href="tel:+919580088540"
               className="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300"
             >
-              📞 +91 9580088540
+              📞 9580088540
             </a>
           </div>
         </div>
