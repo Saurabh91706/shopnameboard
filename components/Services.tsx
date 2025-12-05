@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -12,41 +11,77 @@ export default function Services() {
 
   const services = [
     {
-      title: 'ACP 3D Boards',
-      description: 'Premium 3D lit boards with laser-cut acrylic letters and industrial-grade LED modules',
-      gradient: 'from-red-500 via-red-600 to-red-700',
-      link: '/services#acp-3d',
-      image: '/services/out-shop/acp-3d-board-lit.webp',
+      title: '2D ACP Board',
+      description: 'Flat aluminum composite panel boards ideal for budget-conscious businesses. Lightweight, weather-resistant, and available in multiple colors.',
+      price: '₹3K-₹10K',
+      gradient: 'from-primary-400 via-primary-500 to-primary-600',
+      link: '/services/2d-acp-board',
+      icon: '🎨',
     },
     {
-      title: 'Fabric Light Boxes',
-      description: 'Ultra-thin tension fabric system with tool-free graphic changes and premium visual output',
-      gradient: 'from-red-600 via-red-700 to-red-800',
-      link: '/services#fabric-lit',
-      image: '/services/in-shop/fabric-lit-board.webp',
+      title: '3D ACP Board',
+      description: 'Premium boards with raised letters creating depth and shadow effects. Available in backlit and non-backlit variants for maximum visibility.',
+      price: '₹8K-₹25K',
+      gradient: 'from-primary-500 via-primary-600 to-primary-700',
+      link: '/services/3d-acp-board',
+      icon: '✨',
     },
     {
-      title: 'Flange Signs',
-      description: 'Double-sided projecting signs for maximum visibility from both directions',
-      gradient: 'from-red-700 via-red-800 to-red-900',
-      link: '/services#flange',
-      image: '/services/out-shop/3d-flange-board-lit.webp',
+      title: 'GSB Board',
+      description: 'Galvanized Steel Boards offering industrial-grade durability. Perfect for areas with harsh weather conditions. 10+ years lifespan.',
+      price: '₹6K-₹18K',
+      gradient: 'from-primary-600 via-primary-700 to-orange-600',
+      link: '/services/gsb-board',
+      icon: '🛡️',
     },
     {
-      title: 'LED Clip-ons',
-      description: 'Ultra-slim snap frames with instant graphic changes and energy-efficient edge-lit LEDs',
-      gradient: 'from-red-500 via-red-700 to-red-900',
-      link: '/services#led-clip',
-      image: '/services/in-shop/led-clip-on-board.webp',
+      title: 'Non-Lit Board',
+      description: 'Flex printing on iron frames. Most affordable option, suitable for well-lit shopping complexes and indoor locations.',
+      price: '₹2K-₹8K',
+      gradient: 'from-primary-400 via-orange-500 to-orange-600',
+      link: '/services/non-lit-board',
+      icon: '📋',
+    },
+    {
+      title: 'Arch Gate',
+      description: 'Grand arch gates for shops, events, and promotions. Custom designs with eye-catching appeal. Perfect for shop entrances.',
+      price: '₹15K-₹50K',
+      gradient: 'from-orange-500 via-primary-500 to-primary-600',
+      link: '/services/arch-gate',
+      icon: '🏛️',
+    },
+    {
+      title: 'Fabric Light Box',
+      description: 'Premium fabric light boxes with LED backlighting for soft, even illumination. Modern design with tool-free graphic changes.',
+      price: '₹8K-₹22K',
+      gradient: 'from-primary-500 via-orange-500 to-orange-600',
+      link: '/services/fabric-box',
+      icon: '💡',
+    },
+    {
+      title: 'Lit Flange Board',
+      description: 'Double-sided lit flange boards with LED. Visible from both directions. Perfect for main roads and high-traffic areas.',
+      price: '₹10K-₹30K',
+      gradient: 'from-primary-600 via-orange-600 to-orange-700',
+      link: '/services/lit-flange-board',
+      icon: '🔆',
+    },
+    {
+      title: 'Non-Lit Flange Board',
+      description: 'Classic non-lit flange boards for well-lit areas. Double-sided visibility without electricity costs. Cost-effective solution.',
+      price: '₹5K-₹15K',
+      gradient: 'from-orange-500 via-primary-600 to-primary-700',
+      link: '/services/non-lit-flange-board',
+      icon: '📍',
     },
   ]
 
   return (
-    <section className="section-padding bg-white relative overflow-hidden">
+    <section className="py-20 md:py-32 bg-white relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute top-1/4 left-0 w-72 h-72 bg-red-100/30 rounded-full blur-3xl"
+          className="absolute top-1/4 left-0 w-72 h-72 bg-primary-100/30 rounded-full blur-3xl"
           animate={{
             x: [0, 100, 0],
             y: [0, 50, 0],
@@ -55,7 +90,7 @@ export default function Services() {
           transition={{ duration: 10, repeat: Infinity }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-0 w-96 h-96 bg-red-200/20 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-0 w-96 h-96 bg-orange-100/20 rounded-full blur-3xl"
           animate={{
             x: [0, -100, 0],
             y: [0, -50, 0],
@@ -65,84 +100,89 @@ export default function Services() {
         />
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6"
           >
-            <span className="gradient-text">Our Services</span>
+            <span className="bg-gradient-to-r from-primary-500 via-primary-600 to-orange-600 bg-clip-text text-transparent">
+              Our Services
+            </span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto font-medium"
+            className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto font-medium"
           >
-            14+ specialized shop name boards manufacturing solutions designed for superior performance, maximum visibility, and flawless integration. 
-            Serving Bangalore, Mumbai, Delhi, Chennai, Pune, Kolkata, and 50+ cities with premium ACP 3D Boards, LED Signage, 
-            Fabric Light Boxes, and comprehensive shop name boards marketing services.
+            8 specialized <strong>shop name board manufacturing</strong> solutions designed for superior performance,
+            maximum visibility, and flawless integration. Serving <strong>Mumbai, Delhi, Bangalore, Chennai, Pune</strong>,
+            and 15+ cities with premium ACP boards, GSB boards, fabric light boxes, and comprehensive signage solutions.
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50, rotateY: -15 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={
                 isInView
-                  ? { opacity: 1, y: 0, rotateY: 0 }
-                  : { opacity: 0, y: 50, rotateY: -15 }
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 50 }
               }
               transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-              whileHover={{ y: -15, scale: 1.05, rotateY: 5 }}
-              className="group perspective-1000"
+              whileHover={{ y: -10, scale: 1.03 }}
+              className="group"
             >
-              <div className="relative h-full bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-red-200">
-                {/* Image Section */}
-                <div className="relative w-full h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
-                  <Image
-                    src={service.image}
-                    alt={`${service.title} - ${service.description}`}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    priority={index < 2}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="relative h-full bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary-200">
+                {/* Icon & Gradient Background */}
+                <div className={`relative w-full h-32 bg-gradient-to-br ${service.gradient} flex items-center justify-center`}>
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-6xl"
+                  >
+                    {service.icon}
+                  </motion.div>
                 </div>
-                
+
                 {/* Content Section */}
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
+                      {service.title}
+                    </h3>
+                    <span className="text-sm font-bold text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
+                      {service.price}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 mb-4 leading-relaxed text-sm">
                     {service.description}
                   </p>
-                  
+
                   <motion.div
                     whileHover={{ x: 5 }}
                     className="relative z-10"
                   >
                     <Link
                       href={service.link}
-                      className="text-red-600 font-bold hover:text-red-700 transition-colors inline-flex items-center gap-2 group/link"
+                      className="text-primary-600 font-bold hover:text-primary-700 transition-colors inline-flex items-center gap-2 group/link text-sm"
                     >
                       Learn more
                       <motion.span
                         animate={{ x: [0, 5, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
-                        className="text-xl"
+                        className="text-lg"
                       >
                         →
                       </motion.span>
@@ -150,7 +190,7 @@ export default function Services() {
                   </motion.div>
                 </div>
 
-                {/* Gradient Background on Hover */}
+                {/* Hover Gradient Effect */}
                 <motion.div
                   className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}
                 />
@@ -162,12 +202,18 @@ export default function Services() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 1 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
           className="text-center"
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link href="/services" className="btn-primary">
-              View All 14+ Services
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-primary-500/50 hover:shadow-xl hover:shadow-primary-500/70 transition-all duration-300"
+            >
+              View All Services
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </motion.div>
         </motion.div>
