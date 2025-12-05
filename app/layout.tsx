@@ -8,18 +8,19 @@ import ConditionalLayout from '@/components/ConditionalLayout'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Shop Name Boards Manufacturing & Marketing in Bangalore, Mumbai, Delhi, Chennai, Pune, Kolkata | The Mediaverse',
-  description: 'India\'s #1 Shop Name Boards Manufacturer & Marketing Company. Premium ACP 3D Boards, LED Signage, Fabric Light Boxes in Bangalore, Mumbai, Delhi, Chennai, Pune, Kolkata. 14+ Signage Solutions. Free Quote. Fast Delivery.',
-  keywords: 'shop name boards manufacturing, shop name boards marketing, shop name board manufacturer, signage company, ACP board manufacturer, LED sign board, 3D letter signage, shop hoarding, retail signage, corporate branding, shop name boards Bangalore, shop name boards Mumbai, shop name boards Delhi, shop name boards Chennai, shop name boards Pune, shop name boards Kolkata, shop name boards Hyderabad, shop name boards Ahmedabad, shop name boards Jaipur, shop name boards Lucknow, shop name boards Indore, shop name boards Patna, shop name boards Bhopal, shop name boards Visakhapatnam, shop name boards Surat, shop name boards Kanpur, shop name boards Nagpur, shop name boards Coimbatore, shop name boards Vadodara, shop name boards Ghaziabad',
+  title: '#1 Shop Name Board Manufacturer in India | 2D ACP, 3D ACP, GSB, Arch Gates | Shop Name Board by The Mediaverse',
+  description: 'India\'s #1 Shop Name Board Manufacturer - Shop Name Board by The Mediaverse. Expert in 2D ACP Boards, 3D ACP Boards, GSB Boards, Non-Lit Boards, Arch Gates, Fabric Boxes, Lit/Non-Lit Flange Boards. Serving 20 cities across India. ✓ Free Quote ✓ 2 Year Warranty ✓ Fast Installation. Call 9580088540',
+  keywords: 'shop name board manufacturer, shop name board marketing, shop name board, 2d acp board, 3d acp board, gsb board, arch gate, fabric box, lit flange board, non lit board, shop name boards Bangalore, shop name boards Mumbai, shop name boards Delhi, shop name boards Chennai, shop name boards Pune, shop name boards Kolkata, shop name boards Hyderabad, shop name boards Ahmedabad, shop name boards Jaipur, shop name boards Lucknow, shop name boards Indore, shop name boards Chandigarh, shop name boards Coimbatore, shop name boards Kochi, shop name boards Nagpur, shop name boards Bhubaneswar, shop name boards Visakhapatnam, shop name boards Guwahati, shop name boards Mysore, shop name boards Surat',
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
   },
   openGraph: {
-    title: 'Shop Name Boards Manufacturing & Marketing | The Mediaverse',
-    description: 'Premium Shop Name Boards & Signage Solutions in Bangalore, Mumbai, Delhi, Chennai, Pune, Kolkata. ACP 3D Boards, LED Signage, Fabric Light Boxes.',
+    title: '#1 Shop Name Board Manufacturer in India | Shop Name Board by The Mediaverse',
+    description: 'Leading shop name board manufacturer in India. 2D ACP, 3D ACP, GSB Boards, Arch Gates, Fabric Boxes. Serving 20 cities. Call 9580088540',
     type: 'website',
     locale: 'en_IN',
+    siteName: 'Shop Name Board by The Mediaverse',
   },
   alternates: {
     canonical: 'https://shopnameboard.com',
@@ -43,12 +44,14 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "@id": "https://shopnameboard.com",
-              "name": "The Mediaverse - Shop Name Boards Manufacturing & Marketing",
-              "alternateName": "The Mediaverse",
+              "name": "Shop Name Board by The Mediaverse",
+              "alternateName": "The Mediaverse Shop Name Board",
               "url": "https://shopnameboard.com",
               "logo": "https://shopnameboard.com/logo.png",
               "image": "https://shopnameboard.com/logo.png",
-              "description": "India's #1 Shop Name Boards Manufacturer & Marketing Company. Premium ACP 3D Boards, LED Signage, Fabric Light Boxes in Bangalore, Mumbai, Delhi, Chennai, Pune, Kolkata. 14+ Signage Solutions.",
+              "description": "India's #1 Shop Name Board Manufacturer. Expert in 2D ACP Boards, 3D ACP Boards, GSB Boards, Non-Lit Boards, Arch Gates, Fabric Boxes, Lit & Non-Lit Flange Boards. Serving 20 major cities across India with 2 year warranty and fast installation.",
+              "email": "contact@themediaverse.in",
+              "telephone": "+91-9580088540",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN",
@@ -67,13 +70,14 @@ export default function RootLayout({
                 {"@type": "City", "name": "Lucknow"}
               ],
               "serviceType": [
-                "Shop Name Boards Manufacturing",
-                "Shop Name Boards Marketing",
-                "ACP 3D Board Manufacturing",
-                "LED Signage Manufacturing",
-                "Fabric Light Box Manufacturing",
-                "Retail Signage Solutions",
-                "Corporate Branding Solutions"
+                "2D ACP Board Manufacturing",
+                "3D ACP Board Manufacturing",
+                "GSB Board Manufacturing",
+                "Non-Lit Board Manufacturing",
+                "Arch Gate Manufacturing",
+                "Fabric Box Manufacturing",
+                "Lit Flange Board Manufacturing",
+                "Non-Lit Flange Board Manufacturing"
               ],
               "priceRange": "$$",
               "sameAs": [],
